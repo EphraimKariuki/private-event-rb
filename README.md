@@ -15,8 +15,25 @@ This project will requires us to model many-to-many relationships and also to be
 * Configuration
 
 * Database creation
-
+ 
+   1. Open `config/database.yml` and look for the development section:
+     
+        ```yaml
+        default: &default
+        adapter: postgresql             # Use PostgreSQL adapter
+        encoding: unicode               # Use Unicode character encoding
+        username: <%= ENV["PG_USERNAME"] %>  # Get DB username from environment
+        password: <%= ENV["PG_PASSWORD"] %>  # Get DB password from environment
+        host: localhost                 # Connect to DB running locally
+        pool: 5                         # Set connection pool size
+            
+        ```
+    - Set the appropriate corresponding enviroment varibles of your `PG_USERNAME` and `PG_PASSWORD` 
+    
+  2. Run `rails db:create`  
+  
 * Database initialization
+   
 
 * How to run the test suite
 
