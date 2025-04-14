@@ -28,10 +28,10 @@ This project will requires us to model many-to-many relationships and also to be
         pool: 5                         # Set connection pool size
             
         ```
-    - Set the appropriate corresponding enviroment varibles of your `PG_USERNAME` and `PG_PASSWORD` 
+     Set the appropriate corresponding enviroment varibles of your `PG_USERNAME` and `PG_PASSWORD` 
     
   2. Run `rails db:create`  
-  
+
 * Database initialization
    
 
