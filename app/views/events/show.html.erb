@@ -1,0 +1,13 @@
+<div>
+    <h2><% @event.name%></h2>
+    <p>Event Description: <%= @event.description %></p>
+    <p>Event's Location: <%= @event.location %></p>
+    <p>Date : <%= @event.time %></p>   
+    <p>Created by: <%= @event.creator.username %></p> 
+
+    <% if current_user.id === @event.creator.id%>
+        <%= link_to "Edit", edit_user_event_path(current_user, @event) %> 
+        <%= button_to "Delete", event_path(@event), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <%= button_to "Attend Event"%>
+</div>

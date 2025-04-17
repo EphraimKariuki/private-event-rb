@@ -1,15 +1,15 @@
-<h1><%= current_user.username.capitalize%>, this are the events you have created</h1>
 
-
-<p> <%= link_to "Create Event", new_user_event_path(current_user) %></p>
 
 <% if @events.any? %>
+    <h1>This are the events you have created</h1>
     <% @events.each do |event |%>
-        <p><%= event.name %></p>
-        <p><%= event.description %></p>
+        <p>Event's Name :<%= event.name %></p>
+        <p>Event Description: <%= event.description %></p>
         <p> Event Location : <%= event.location %></p>
         <p>Time : <%= event.time %></p>
+        <%= link_to "Edit", edit_user_event_path(current_user, event)%>
+        <%= button_to "Delete", event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
 <% else %>
-    <p> You have not created any event yet.</p>
+    <h1> You have not created any event yet. <%= link_to "Create Event", new_user_event_path(current_user) %></h1>
 <% end %>

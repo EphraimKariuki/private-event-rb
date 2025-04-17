@@ -8,6 +8,7 @@
             <p><%= event.description %></p>
             <p><%= event.time %></p>
             <p><%= event.location %></p>
+            <p><%= link_to "View Event", event_path(event) %></p>
         </div>
    <% end %>
 <% else %>
