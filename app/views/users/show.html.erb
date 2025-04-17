@@ -1,0 +1,15 @@
+<h1><%= current_user.username.capitalize%>, this are the events you have created</h1>
+
+
+<p> <%= link_to "Create Event", new_user_event_path(current_user) %></p>
+
+<% if @events.any? %>
+    <% @events.each do |event |%>
+        <p><%= event.name %></p>
+        <p><%= event.description %></p>
+        <p> Event Location : <%= event.location %></p>
+        <p>Time : <%= event.time %></p>
+    <% end %>
+<% else %>
+    <p> You have not created any event yet.</p>
+<% end %>
