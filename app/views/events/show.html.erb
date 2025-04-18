@@ -9,5 +9,26 @@
         <%= link_to "Edit", edit_user_event_path(current_user, @event) %> 
         <%= button_to "Delete", event_path(@event), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
-    <%= button_to "Attend Event"%>
+
+    
+    <% if @event.attendees.include?(current_user)%>
+        <% attendance = @event.event_attendances.find_by(event_attendee_id: current_user.id) %>
+        <p>You are attending this event.</p>
+
+        <%= button_to "Cancel Attendance", event_event_attendance_path(@event, attendance ), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% else %>
+        <p>You are not attending this event.</p>    
+        <%= button_to "Attend Event", event_event_attendances_path(@event), method: :post%>
+    <% end %>
+
+    <h3>Attendees:</h3>
+    <% if @event.attendees.any? %>
+        <ul>
+            <% @event.attendees.each do |attendee| %>
+                <li><%= attendee.username %></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <p>No attendees yet.</p>
+    <% end %>    
 </div>
