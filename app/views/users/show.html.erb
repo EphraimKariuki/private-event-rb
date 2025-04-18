@@ -13,3 +13,18 @@
 <% else %>
     <h1> You have not created any event yet. <%= link_to "Create Event", new_user_event_path(current_user) %></h1>
 <% end %>
+
+<% if @attended_events.any? %>
+    <h1>This are the events you are attending</h1>
+    <% @attended_events.each do |event |%>
+        <p>Event's Name :<%= event.name %></p>
+        <p>Event Description: <%= event.description %></p>
+        <p> Event Location : <%= event.location %></p>
+        <p>Time : <%= event.time %></p>
+        <p>Created by: <%= event.creator.username %></p>
+        <%= link_to "View Event", event_path(event)%>
+        
+    <% end %>   
+<% else %>
+    <h1> You are not attending any event yet. </h1>
+<% end %>   
